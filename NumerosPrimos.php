@@ -21,7 +21,7 @@
                 border: none;
             }
             #primo{
-                background-color: yellow;
+                background-color: green;
             }
             #no-primo{
                 background-color: red;
