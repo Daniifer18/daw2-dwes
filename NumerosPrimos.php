@@ -40,7 +40,6 @@
                         <?php }else{ ?>
                             <td id="no-primo">
                                 <?php echo $num++; ?>
-                                
                             </td>
                         <?php } ?>
                     <?php } ?>
