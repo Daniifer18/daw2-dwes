@@ -2,8 +2,7 @@
     $r = mt_rand(128,255); 
     $g = mt_rand(128,255);
     $b = mt_rand(128,255);
-    $a = '0.2';
-    $color = 'rgba('.$r.','.$g.','.$b.','.$a.')';
+    $color = "rgb(".$r.",".$g.",".$b.")";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,34 +12,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ejercicio 8</title>
         <style>
-            table{
-                border:none;
-            }
-            td{
-                border:none;
-            }
             .fondo{
-                background-color: <?php echo $bgcolor ?>;
+                background-color: <?php echo $color ?>;
+                color: <?php echo $color ?>;
             }
         </style>
     </head>
     <body>
         <center>
                 <h1>PIRÁMIDE DE COLORES</h1>
-                <table>
                     <?php $n = 8; 
-                        for($i = 1; $i <= $n; $i++) { 
-                            echo "<tr>";
+                        for($i = 1; $i <= $n; $i++) {
                                 for($b = 1; $b <= $n - $i; $b++){
-                                    echo "<td></td>";
+                                    echo "<span> </span>";
                                 }
                                 for($j = 1;$j <= 2 * $i - 1;$j++){
-                                    echo "<td class=fondo></td>";
+                                    echo "<span class=fondo>+</span>";
                                 }
-                            echo "</tr>";
+                            echo "<br>";
                         }
                     ?>
-                </table>   
             </center>
     </body>
 </html>
