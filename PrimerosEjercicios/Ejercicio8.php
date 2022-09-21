@@ -14,7 +14,7 @@
         <style>
             .fondo{
                 background-color: <?php echo $color ?>;
-                color: <?php echo $color ?>;    
+                color: <?php echo $color ?>;
             }
         </style>
     </head>

@@ -1,4 +1,4 @@
-<?php $nombre = " Alberto "; $pi = 3.14; $r = 5*5; ?>
+<?php $nombre = " Alberto "; $pi = 3.14; $r = 5; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,7 +22,7 @@
             echo "<h3>Bienvenid@ a la página " . $nombre . "</h3>"
         ?>
         <?php 
-            echo  "<p>El área del círculo es de: ". $pi*$r ."m2</p>"
+            echo  "<p>El área del círculo es de: ". $pi*($r*$r) ."m2</p>"
         ?>
     </body>
 </html>
