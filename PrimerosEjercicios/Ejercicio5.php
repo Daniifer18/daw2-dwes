@@ -1,4 +1,11 @@
-<?php $nombre = " Alberto "; $pi = 3.14; $r = 5; ?>
+<?php 
+    $nombre = " Alberto "; $pi = 3.14;; 
+    if(isset($_GET["radio"]) && is_numeric($_GET["radio"])){
+        $r= $_GET["radio"];
+    }else{
+        $r = 4;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,22 +14,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ejercicio 5</title>
         <style>
-            h3{
-                text-align: center;
-            }
-            p{
-                font-size:16px;
-                font-family: italic;
-            }
+            input{
+                border-radius: 5px;
+                background-color: ;
+            }    
         </style>
     </head>
     <body>
-        <h1>Área de un circulo</h1>
-        <?php 
-            echo "<h3>Bienvenid@ a la página " . $nombre . "</h3>"
-        ?>
-        <?php 
-            echo  "<p>El área del círculo es de: ". $pi*($r*$r) ."m2</p>"
-        ?>
+        <form type="GET" action="Ejercicio5.php">
+            Radio:<input type="number" name="radio" value="<?= $r ?>">
+            <input type="submit" value="Calcular">
+            <br>
+            Area: <?php echo M_PI*pow($r,2) ?>
+        </form>
     </body>
 </html>
