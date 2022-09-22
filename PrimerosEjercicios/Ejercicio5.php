@@ -15,7 +15,7 @@
         <title>Ejercicio 5</title>
         <style>
             form,h1{
-                text-align: center;
+                text-align: center;    
             }
             .f{
                 border: solid 2px;
