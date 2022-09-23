@@ -10,24 +10,34 @@
             body {
                 background-color: lightgrey;
             }
+            h3{
+                text-align: center;
+            }
+            #centro{
+                border-radius: 5px black;
+            }
         </style>
 </head>
 <body>
-    <h3>
-        Carta de presentacion
-    </h3>
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6" id="centro">
-            <form action="Generador.php" type="GET">
-                Nombre:<input type="text" name="nombre" placeholder="Introduzca su nombre" class="form-control"><br>
-                Empresa:<input type="text" name="empresa" placeholder="Introduzca su empresa" class="form-control"><br>
-                Representante:<input type="text" name="representante" placeholder="Introduzca el nomrbe de su representante" class="form-control"><br>
-                Fecha:<input type="date" name="fecha" placeholder="Introduzca la fecha" class="form-control"><br>
-                <div class="d-grid gap-3">
-                    <input type="submit" value="Generar PDF" class="btn btn-primary btn-block">
-                </div> 
-            </form>
+            <h3>
+                Carta de presentacion
+            </h3>
+            <div class="card">
+                <div class="card-body">
+                    <form action="Generador.php" type="GET">
+                        Nombre:<input type="text" name="nombre" placeholder="Introduzca su nombre" class="form-control"><br>
+                        Empresa:<input type="text" name="empresa" placeholder="Introduzca su empresa" class="form-control"><br>
+                        Representante:<input type="text" name="representante" placeholder="Introduzca el nomrbe de su representante" class="form-control"><br>
+                        Fecha:<input type="date" name="fecha" placeholder="Introduzca la fecha" class="form-control"><br>
+                        <div class="d-grid gap-3">
+                            <input type="submit" value="Generar PDF" class="btn btn-primary btn-block">
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="col-md-3"></div>
     </div>

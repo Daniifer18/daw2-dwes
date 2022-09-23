@@ -13,10 +13,15 @@
     $pdf->SetFont('Arial', 'B', 18);
     
     // Prints a cell with given text 
-    $nb = $pdf->Cell(60,20,$_GET["nombre"]);
-    $empresa = $pdf->Cell(60,20,$_GET["empresa"]);
-    $repre = $pdf->Cell(60,20,$_GET["representante"]);
-    $date = $pdf->Cell(60,20,$_GET["fecha"]);
+    $pdf->Cell(60,20,' Carta de presentacion ');
+    $pdf->ln(20);
+    $pdf->Cell(10,20,"-Nombre: " . $_GET["nombre"]);
+    $pdf->ln(10);
+    $pdf->Cell(10,20,"-Empresa: " .$_GET["empresa"]);
+    $pdf->ln(10);
+    $pdf->Cell(10,20,"-Representante: " . $_GET["representante"]);
+    $pdf->ln(10);
+    $pdf->Cell(10,20,"-Fecha: " . $_GET["fecha"]);
 
     // return the generated output
     $pdf->Output();
