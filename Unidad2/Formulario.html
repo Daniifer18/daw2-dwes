@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <style>
+            body {
+                background-color: lightgrey;
+            }
+        </style>
+</head>
+<body>
+    <h3>
+        Carta de presentacion
+    </h3>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" id="centro">
+            <form action="Generador.php" type="GET">
+                Nombre:<input type="text" name="nombre" placeholder="Introduzca su nombre" class="form-control"><br>
+                Empresa:<input type="text" name="empresa" placeholder="Introduzca su empresa" class="form-control"><br>
+                Representante:<input type="text" name="representante" placeholder="Introduzca el nomrbe de su representante" class="form-control"><br>
+                Fecha:<input type="date" name="fecha" placeholder="Introduzca la fecha" class="form-control"><br>
+                <div class="d-grid gap-3">
+                    <input type="submit" value="Generar PDF" class="btn btn-primary btn-block">
+                </div> 
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</body>
+</html>
