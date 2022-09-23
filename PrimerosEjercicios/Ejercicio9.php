@@ -42,7 +42,7 @@
         $num_con = ContarConsonantes($nueva_cadena);
         
     }else{
-        echo $cadena = "Hola";
+        $cadena = "Hola";
     }
 ?>
 <!DOCTYPE html>
@@ -52,6 +52,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EJERCICIO PALINDROMOS</title>
+    <style>
+        body{
+            background-color: lightgrey;
+        }
+        form{
+            margin: 0 auto;
+            border-radius: 5px solid black;
+        }
+    </style>
 </head>
 <body>
     <form type="GET" action="Ejercicio9.php">
