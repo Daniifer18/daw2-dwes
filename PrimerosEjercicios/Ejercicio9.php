@@ -1,49 +1,46 @@
 <?php 
     if(isset($_GET["cadena"])){
         $cadena= $_GET["cadena"];
-        $nueva_cadena = str_replace(" ","",$cadena);
-        $nueva_cadena = strtolower($nueva_cadena);
-        
-        function Palindromo($nueva_cadena){
-            $valido = true;
+    }else{
+        $cadena = "";
+    }
+
+    $nueva_cadena = str_replace(" ","",$cadena);
+    $nueva_cadena = strtolower($nueva_cadena);
+
+    function Palindromo($nueva_cadena){
+        $valido = true;
             for($i = 0;$i < strlen($nueva_cadena)/2 && $valido;$i++){
-                
                 if($nueva_cadena[$i] != $nueva_cadena[strlen($nueva_cadena) - $i - 1]){
                     $valido = false;
                 }
             }
-
-            return $valido;
-        }
-
-        
-        function ContarVocales($nueva_cadena){
-            $vocal = 0;
-            for($j = 0;$j < strlen($nueva_cadena);$j++){
-                if (in_array($nueva_cadena[$j], ["a", "e", "i", "o", "u"])) {
-                    $vocal++;
-                }
-            }    
-            return $vocal;
-        }
-        $num_vocal = ContarVocales($nueva_cadena);
-
-        function ContarConsonantes($nueva_cadena){
-            $con = 0;
-            for($k = 0;$k < strlen($nueva_cadena);$k++){
-                if (in_array($nueva_cadena[$k], ["a", "e", "i", "o", "u"])) {
-                    
-                }else{
-                    $con++;
-                }
-            }    
-            return $con;
-        }
-        $num_con = ContarConsonantes($nueva_cadena);
-        
-    }else{
-        $cadena = "Hola";
+        return $valido;
     }
+    
+    function ContarVocales($nueva_cadena){
+        $vocal = 0;
+        for($j = 0;$j < strlen($nueva_cadena);$j++){
+            if (in_array($nueva_cadena[$j], ["a", "e", "i", "o", "u"])) {
+                    $vocal++;
+            }
+        }    
+        return $vocal;
+    }
+            
+    function ContarConsonantes($nueva_cadena){
+        $con = 0;
+        for($k = 0;$k < strlen($nueva_cadena);$k++){
+            if (in_array($nueva_cadena[$k], ["a", "e", "i", "o", "u"])) {
+                        
+            }else{
+                $con++;
+            }
+        }    
+        return $con;
+    }
+    $num_vocal = ContarVocales($nueva_cadena);
+    $num_con = ContarConsonantes($nueva_cadena);
 ?>
 <!DOCTYPE html>
 <html lang="en">
