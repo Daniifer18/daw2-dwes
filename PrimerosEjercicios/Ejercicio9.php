@@ -54,7 +54,6 @@
             background-color: lightgrey;
         }
         form{
-            margin: 0 auto;
             border-radius: 5px solid black;
         }
     </style>
@@ -65,7 +64,6 @@
         <input type="submit" value="Enviar">
         <br><br>   
         <div>
-            <p>La cadena enviada es: <?php echo $cadena ?></p><br>
             <ul>
                 <li>Número de vocales:<?php echo $num_vocal ?></li>
                 <li>Número de consonantes:<?php echo $num_con ?></li>
