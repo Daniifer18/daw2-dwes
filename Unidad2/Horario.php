@@ -28,6 +28,7 @@
         table{
             background-color: white;
             box-shadow: 10px 5px 5px black;
+            text-align: center;
         }
         #rec{
             background-color: lightgray;
