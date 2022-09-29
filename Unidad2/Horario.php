@@ -23,7 +23,7 @@
         }
         #centro{
             margin: 0 auto;
-            margin-top: 3%;
+            margin-top: 1%;
         }
         table{
             background-color: white;
@@ -57,7 +57,9 @@
                 <?php for($i = 0;$i < count($horario[0]);$i++){ ?>
                     <tr>
                         <?php for($j = 0;$j < count($horario);$j++){
-                            if($horario[$j][$i] == "Horas" ||$horario[$j][$i] == "Lunes" || $horario[$j][$i] == "Martes" || $horario[$j][$i] == "Miércoles" || $horario[$j][$i] == "Jueves" || $horario[$j][$i] == "Viernes"){  ?>
+                            if($horario[$j][$i] == "Horas" ||$horario[$j][$i] == "Lunes" 
+                            || $horario[$j][$i] == "Martes" || $horario[$j][$i] == "Miércoles" 
+                            || $horario[$j][$i] == "Jueves" || $horario[$j][$i] == "Viernes"){  ?>
                                 <td id="dia">
                                     <?php echo $horario[$j][$i] ?>
                                 </td>
