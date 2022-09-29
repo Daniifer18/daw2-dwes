@@ -1,10 +1,11 @@
 <?php 
     $horario = [
-        ["DWEC","DWEC","DWEC","recreo","EIE_DAW","EIE_DAW","ITG_DAW"],
-        ["ITG2_DAW","DAW","DAW","recreo","DIW","DIW","DIW"],
-        ["DIW","DIW","DIW","recreo","DWES","DWES","DWES"],
-        ["EIE_DAW","DAW","DAW","recreo","DWES","DWES","DWES"],
-        ["DWES","DWES","DWES","recreo","DWEC","DWEC","DWEC"],
+        ["Horas","16:00<br>16:55","16:55<br>17:50","17:50<br>18:45","18:45<br>19:10","19:10<br>20:05","20:05<br>21:00","21:00<br>21:55"],
+        ["Lunes","DWEC","DWEC","DWEC","recreo","EIE_DAW","EIE_DAW","ITG_DAW"],
+        ["Martes","ITG2_DAW","DAW","DAW","recreo","DIW","DIW","DIW"],
+        ["Miércoles","DIW","DIW","DIW","recreo","DWES","DWES","DWES"],
+        ["Jueves","EIE_DAW","DAW","DAW","recreo","DWES","DWES","DWES"],
+        ["Viernes","DWES","DWES","DWES","recreo","DWEC","DWEC","DWEC"],
     ];
 
 ?>
@@ -26,10 +27,18 @@
         }
         table{
             background-color: white;
+            box-shadow: 10px 5px 5px black;
         }
         #rec{
             background-color: lightgray;
             border-color: lightgrey;
+        }
+        #dia{
+            background-color: black;
+            color: white;
+        }
+        #dia:hover{
+            background-color: green;
         }
         td{
             border: 1px solid black;
@@ -47,7 +56,11 @@
                 <?php for($i = 0;$i < count($horario[0]);$i++){ ?>
                     <tr>
                         <?php for($j = 0;$j < count($horario);$j++){
-                            if($horario[$j][$i] == "recreo"){ ?>
+                            if($horario[$j][$i] == "Horas" ||$horario[$j][$i] == "Lunes" || $horario[$j][$i] == "Martes" || $horario[$j][$i] == "Miércoles" || $horario[$j][$i] == "Jueves" || $horario[$j][$i] == "Viernes"){  ?>
+                                <td id="dia">
+                                    <?php echo $horario[$j][$i] ?>
+                                </td>
+                            <?php } else if($horario[$j][$i] == "recreo"||$horario[$j][$i] == "18:45<br>19:10"){ ?>
                                 <td id="rec">
                                     <?php echo $horario[$j][$i] ?>
                                 </td>
