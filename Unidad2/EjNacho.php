@@ -13,4 +13,11 @@ de tareas_diarias[dia][tarea] y haz un organigrama donde asignes tareas a cada p
 $tareas = ["Barrer","Fregar","Comer","Dormir"];
 $personas = ["Jose","Pepe","Ana","Maria"];
 
+
+for ($i=0; $i <4; $i++) { 
+    $newarr = rand();
+}
+
+
+
 ?>
