@@ -10,7 +10,7 @@ for ($i=0; $i < 3; $i++) {
     $var[$i] = mt_rand(1,100);
 }
 
-sort($var);
+/*sort($var);*/
 
 $cad ="";
 
