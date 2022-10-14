@@ -1,7 +1,7 @@
 <?php
 
-$n1 = 13;
-$n2 = 25;
+$n1;
+$n2;
 
 function sumaNumeros($n1,$n2){
     $suma = 0;
@@ -21,8 +21,6 @@ function sumaNumeros($n1,$n2){
         <title>Ej 6</title>
     </head>
     <body>
-        <!--<?= sumaNumeros($n1,$n2) ?>Una sola llamada-->
-        <!--Varias llamadas-->
         <?php for($i = 0;$i < 10;$i++) { ?>
             <h3>
                 <?php 
@@ -31,9 +29,10 @@ function sumaNumeros($n1,$n2){
                     $vaux = $n2;
                     $n2 = $n1;
                     $n1 = $vaux;
+                    
                 } 
                 echo sumaNumeros($n1,$n2) ?>
             </h3>
-            <?php } ?>
+        <?php } ?>
     </body>
 </html>
