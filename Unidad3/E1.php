@@ -12,16 +12,19 @@ for ($i=0; $i < 3; $i++) {
 
 sort($var);
 
+$cad ="";
+
 function ordenar($var){
     if(($var[0] > $var[1]) && ($var[1] > $var[2]) && ($var[0] > $var[2])){
-        return "<h1>".$var[0]."</h1><h2>".$var[1]."</h2><h3>".$var[2]."</h3>";
+        $cad = "<h1>".$var[0]."</h1><h2>".$var[1]."</h2><h3>".$var[2]."</h3>";
     }elseif(($var[2] > $var[1]) && ($var[1] > $var[0]) && ($var[2] > $var[0])){
-        return "<h1>".$var[2]."</h1><h2>".$var[1]."</h2><h3>".$var[0]."</h3>";
+        $cad = "<h1>".$var[2]."</h1><h2>".$var[1]."</h2><h3>".$var[0]."</h3>";
     }elseif(($var[1] > $var[0]) && ($var[0] > $var[2]) && ($var[1] > $var[2])){
-        return "<h1>".$var[1]."</h1><h2>".$var[0]."</h2><h3>".$var[2]."</h3>";
+        $cad = "<h1>".$var[1]."</h1><h2>".$var[0]."</h2><h3>".$var[2]."</h3>";
     }elseif(($var[2] > $var[0]) && ($var[0] > $var[1]) && ($var[2] > $var[1])){
-       return "<h1>".$var[2]."</h1><h2>".$var[0]."</h2><h3>".$var[1]."</h3>";
+       $cad = "<h1>".$var[2]."</h1><h2>".$var[0]."</h2><h3>".$var[1]."</h3>";
     }
+    return $cad;
 }
 
 ?>
@@ -37,6 +40,7 @@ function ordenar($var){
         <p>
             Numeros ordenados
         </p>
+        <!--
         <h1>
             <?= $var[2] ?>
         </h1>
@@ -46,5 +50,7 @@ function ordenar($var){
         <h3>
             <?= $var[0] ?>
         </h3>
+        -->
+        <?php echo ordenar($var) ?>
     </body>
 </html>
