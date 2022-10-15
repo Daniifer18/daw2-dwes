@@ -1,8 +1,8 @@
 <?php
 
-function tipoArr(){
+function tipoArr(...$parametros){
     $arrAsociativo = [];
-    foreach(func_get_args() as $key => $value) {
+    foreach($parametros as $key => $value) {
         $arrAsociativo[gettype($value)] += 1;
     }
 
@@ -35,7 +35,7 @@ function tipoArr(){
         $arr = tipoArr(3, "h", 'hola', [1,2,3], [1], "h");
         print_r($arr);
         foreach($arr as $key => $value){
-            echo "<p>".$key." <span>=></span> ".$value."</p>";
+            echo "<p>".$key." <span> => </span> ".$value."</p>";
         }
     ?>
 </body>
