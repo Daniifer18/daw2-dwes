@@ -43,7 +43,7 @@ function generaSelect(array $opciones, int $seleccionada = -1) { ?>
                 <div class="card">
                     <div class="card-body" id="sombra">
                     <?php
-                        generaSelect($opciones, 56);
+                        generaSelect($opciones, 2);
                     ?>
                     </div>
                 </div>
