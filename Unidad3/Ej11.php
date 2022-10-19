@@ -1,60 +1,37 @@
 <?php
 
-function modificarArr($arr){
+$arrViejo = [3, "hOlA", 'hola', 4, 5, 8, "PEPE"];
+
+$arrNuevo = [3, "hOlA", 'hola', 4, 5, 8, "PEPE"];
+
+
+function modificarArr($arrNuevo){
     $cont = 2;
-    foreach($arr as &$value){
-        if (gettype($value) == "integer") {
-            $value = pow($value,$cont);
+
+    foreach ($arrNuevo as &$valor) {
+        if (is_int($valor)) {
+            $valor = pow($valor, $cont);
             $cont++;
-        }else if (gettype($value) == "string"){
-            for($i = 0;$i < strlen($value);$i++){
-                if(!verLetra($value[$i])){
-                    $value[$i] = strtoupper($value[$i]);
-                }else{
-                    $value[$i] = strtolower($value[$i]);
+        } elseif (is_float($valor)) {
+            $valor *= -1;
+        } elseif (is_string($valor)) {
+            for ($i=0; $i < strlen($valor); $i++) { 
+                if ($valor[$i] == strtoupper($valor[$i])) {
+                    $valor .= strtolower($valor[$i]);
+                }
+                else {
+                    $valor .= strtoupper($valor[$i]);
                 }
             }
-        }else if (gettype($value) == "float"){
-            $value *= -1;
         }
     }
 }
 
-function tipoArr(...$parametros){
-    $arr1 = [];
-    $arr2 = [];
-    $arrFinal = [];
-    foreach($parametros as $key => $value) {
-        $arr1 = gettype($value);
-        $arr2 = $value;
+
+function verArr($a){
+    foreach($a as $v){
+        echo $v."<br>";
     }
-
-    for ($i=0; $i < count($parametros); $i++) { 
-        $arr1[$i];
-        $arr2[$i];
-        if ($i == count($parametros)-1) {
-            $arrFinal[$i] =[
-                $arr1[$i] => $arr2[$i],
-            ];
-        }else{
-            $arrFinal[$i] =[
-                $arr1[$i] => $arr2[$i]
-            ];
-        }
-    }
-
-    return $arrFinal;
-}
-function verLetra($a){
-
-    $si = false;
-
-    if($a == strtoupper($a)){
-        $si = true;
-    }
-
-    return $si;
-
 }
 
 
@@ -81,15 +58,12 @@ function verLetra($a){
 </head>
 <body>
     <?php 
-        $arr = tipoArr(3, "hOlA", 'hola', 4, 5, [1], "PEPE");
-        print_r($arr);
-
+        modificarArr($arrNuevo);
+        echo "<h3>Array viejo</h3>";
+        verArr($arrViejo);
         echo "<br>";
-        print_r($arr);
-
-        foreach($arr as $key => &$value){
-            echo "<br>".$key."=>".$value;
-        }
+        echo "<h3>Array nuevo</h3>";
+        verArr($arrNuevo);
     ?>
 </body>
 </html>
