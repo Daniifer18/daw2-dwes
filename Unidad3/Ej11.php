@@ -1,40 +1,22 @@
 <?php
 
-$arrViejo = [3, "hOlA", 'hola', 4, 5, 8, "PEPE"];
-
-$arrNuevo = [3, "hOlA", 'hola', 4, 5, 8, "PEPE"];
+$arr = [3, "hOlA", 'hola', -4.9, 5, 8.7, "PEPE"];
 
 
-function modificarArr($arrNuevo){
+function modificarArr(&$arr){
     $cont = 2;
 
-    foreach ($arrNuevo as &$valor) {
+    foreach ($arr as &$valor) {
         if (is_int($valor)) {
             $valor = pow($valor, $cont);
             $cont++;
         } elseif (is_float($valor)) {
             $valor *= -1;
         } elseif (is_string($valor)) {
-            for ($i=0; $i < strlen($valor); $i++) { 
-                if ($valor[$i] == strtoupper($valor[$i])) {
-                    $valor .= strtolower($valor[$i]);
-                }
-                else {
-                    $valor .= strtoupper($valor[$i]);
-                }
-            }
+            $valor = strtolower($valor) ^ strtoupper($valor) ^ $valor;
         }
     }
 }
-
-
-function verArr($a){
-    foreach($a as $v){
-        echo $v."<br>";
-    }
-}
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,23 +29,16 @@ function verArr($a){
         body{
             background-color: lightgray;
         }
-        p{
-            text-align: center;
-            color:red;
-        }
-        span{
-            color: blue;
-        }
     </style>
 </head>
 <body>
     <?php 
-        modificarArr($arrNuevo);
         echo "<h3>Array viejo</h3>";
-        verArr($arrViejo);
+        print_r($arr);
+        modificarArr($arr);
         echo "<br>";
         echo "<h3>Array nuevo</h3>";
-        verArr($arrNuevo);
+        print_r($arr);
     ?>
 </body>
 </html>
