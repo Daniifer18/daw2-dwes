@@ -9,7 +9,7 @@ $opciones = [
 function generaSelect(array $opciones, int $seleccionada = -1) { ?>
     <select>
         <?php foreach($opciones as $clave => $valor) { ?>
-            <option value="<?= $clave ?>" <?php if($valor == $seleccionada) echo "selected"; ?>><?= $clave ?></option>
+            <option value="<?= $clave ?>"<?php if($valor == $seleccionada) echo " selected"; ?>><?= $clave ?></option>
         <?php } ?>
     </select>
 <?php } ?>
@@ -43,7 +43,7 @@ function generaSelect(array $opciones, int $seleccionada = -1) { ?>
                 <div class="card">
                     <div class="card-body" id="sombra">
                     <?php
-                        generaSelect($opciones, 2);
+                        generaSelect($opciones, 56);
                     ?>
                     </div>
                 </div>
