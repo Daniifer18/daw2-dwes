@@ -30,7 +30,19 @@ $coche4->setMarca('Renault');
 $coche4->setCarga(20);
 $coche4->cargar($coche3);
 
-$arr = [$coche1,$coche2,$coche4];
+$coche5 = new CocheRemolque();
+$coche2->setMatricula('1005');
+$coche2->setMarca('Nissan');
+$coche2->setCarga(22);
+$coche2->setCapacidadRemolque(250);
+
+$coche6 = new CocheGrua();
+$coche4->setMatricula('1007');
+$coche4->setMarca('Kia');
+$coche4->setCarga(30);
+$coche4->cargar($coche5);
+
+$arr = [$coche1,$coche2,$coche4,$coche6];
 
 ?>
 <!DOCTYPE html>
