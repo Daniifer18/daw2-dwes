@@ -1,0 +1,14 @@
+body{
+    background-color: lightgrey;
+}
+h3{
+    text-align: center;
+}
+#centro{
+border-radius: 5px black;
+margin-top: 3%;
+font-weight: 600;
+}
+#sub{
+    cursor: pointer;
+}
