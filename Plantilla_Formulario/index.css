@@ -1,23 +1,7 @@
-/*
 body{
-    background-color:hsla(0,0%,100%,1);
-    background-image:
-    radial-gradient(at 27% 76%, hsla(38,100%,49%,1) 0px, transparent 50%),
-    radial-gradient(at 76% 76%, hsla(38,100%,49%,1) 0px, transparent 50%),
-    radial-gradient(at 78% 23%, hsla(198,100%,49%,1) 0px, transparent 50%),
-    radial-gradient(at 23% 22%, hsla(198,100%,49%,1) 0px, transparent 50%);
+    height: 100vh;
+    background-image: linear-gradient( 135deg, #F6D242 10%, #FF52E5 100%);
 }
-*/
-
-body{
-    background-color:hsla(0,0%,0%,1);
-background-image:
-radial-gradient(at 89% 85%, hsla(188,1%,44%,1) 0px, transparent 50%),
-radial-gradient(at 16% 80%, hsla(188,1%,44%,1) 0px, transparent 50%),
-radial-gradient(at 11% 11%, hsla(188,0%,44%,1) 0px, transparent 50%),
-radial-gradient(at 90% 11%, hsla(188,0%,44%,1) 0px, transparent 50%);
-}
-
 h3{
     text-align: center;
 }
