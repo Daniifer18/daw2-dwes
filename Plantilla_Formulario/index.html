@@ -14,10 +14,10 @@
         <div class="col-md-6" id="centro">
             <div class="card">
                 <div class="card-body" id="formulario">
-                    <form action="index.html" type="GET">
+                    <form action="" type="POST" id="form">
                         <h3>Formulario</h3>
                         <label>Nombre:</label><br>
-                        <input type="text" name="nombre" id="nb" placeholder="Introduzca su nombre"><br><br>
+                        <input type="text" name="nombre" id="nb" placeholder="Introduzca su nombre" required><br><br>
                         <label>Apellidos:</label><br>
                         <input type="text" name="apellidos" id="sn" placeholder="Introduzca sus apellidos"><br><br>
                         <label>Correo:</label><br>
@@ -25,10 +25,10 @@
                         <label>Contraseña:</label><br>
                         <input type="password" name="Contraseña" id="pass" placeholder="Introduzca su contraseña"><br><br>
                         <label>Edad:</label><br>
-                        <input type="number" name="annios" id="ed" min="0" max="150" placeholder="Introduzca su edad"><br><br>
+                        <input type="number" name="annios" id="age" min="0" max="150" placeholder="Introduzca su edad"><br><br>
                         <label>Sexo:</label><br>
-                        Hombre: <input type="radio" name="sexo" id="ed"><br>
-                        Mujer: <input type="radio" name="sexo" id="ed"><br><br>
+                        Hombre: <input type="radio" name="sexo" id="h"><br>
+                        Mujer: <input type="radio" name="sexo" id="m"><br><br>
                         <label>Fecha nacimiento:</label><br>
                         <input type="date" name="fecha" id="da"><br><br>
                         <label>Color favorito:</label>
@@ -38,6 +38,8 @@
                         <div class="d-grid gap-3">
                             <input type="submit" value="Enviar" class="btn btn-primary btn-block" id="sub">
                         </div>
+                        <p class="warnings" id="warnings"></p>
+                        <script src="index.js"></script>
                     </form>
                 </div>
             </div>
