@@ -1,0 +1,26 @@
+body{
+    height: 100vh;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+h3{
+    text-align: center;
+}
+#centro{
+border-radius: 5px black;
+margin-top: 3%;
+font-weight: 600;
+}
+#sub{
+    cursor: pointer;
+}
+.error{
+    color: red;
+    font-size: 12px;
+    margin-bottom:10px;
+}
+.error p{
+    margin:0;
+}
