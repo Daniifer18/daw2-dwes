@@ -97,7 +97,7 @@ if(isset($_POST['Enviar'])){
                                     array_walk($opcionesMinuto, function($op, $key, $d){
                                         $sel = ($op==$d)?"selected":"";
                                         echo "<option value='$op' $sel>$op</option>";
-                                    }, $min);
+                                    }, $minuto);
                                 ?>
                                 </select>
                                 <?php
