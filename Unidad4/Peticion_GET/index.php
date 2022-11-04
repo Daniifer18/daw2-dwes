@@ -1,6 +1,5 @@
 <?php
 
-
 $temazo="";
 $hora=date("h");
 $min=date("i");
@@ -36,7 +35,7 @@ if(isset($_POST['Enviar'])) {
     if(empty($errores)) {
 
         file_put_contents(
-            "canciones.csv",
+            "./canciones.csv",
             "$tema;$hora\n",
             FILE_APPEND
         );
@@ -46,7 +45,6 @@ if(isset($_POST['Enviar'])) {
         exit();
     }
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -66,7 +64,7 @@ if(isset($_POST['Enviar'])) {
             <div class="col-md-6" id="centro">
                 <div class="card">
                     <div class="card-body" id="formulario">
-                        <form action="" type="POST">
+                        <form action="" type="post">
                             <h3>Party</h3>
                             <div>
                                 <label>Tema:</label><br>
