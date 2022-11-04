@@ -1,10 +1,8 @@
 <?php
-    $data = file_get_contents(
-        "canciones.csv"
-    );
+    $data =file_get_contents("temas.csv");
 
-    $lines = explode("\n", $data);
-    print_r($lines);
+    $data= explode("\n",$data);
+    array_pop($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,16 +22,16 @@
             </tr>
         </thead>
         <tbody>
-            <?php 
-                foreach ($lines as $line) {
-                    $fields = explode($line, ";");
-                    echo "<tr>";
-                    echo "<td>$fields[0]</td>";
-                    echo "<td>$fields[1]</td>";
-                    echo "<td>$fields[2]</td>";
-                    echo "</tr>";
-                }
-            ?>
+        <?php
+            foreach($data as $key => $valor){
+                echo "<tr>";
+                    $valor = explode(";",$valor);
+                echo "<td>" .$valor[0]. "</td>";
+                echo "<td>" .$valor[1]. "</td>";
+                echo "<td>" .$valor[2]. "</td>";
+                echo "</tr>";
+            }
+        ?>    
         </tbody>
     </table>
 </body>

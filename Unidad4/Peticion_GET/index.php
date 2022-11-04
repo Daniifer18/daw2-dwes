@@ -1,51 +1,63 @@
 <?php
 
-$temazo="";
-$hora=date("h");
-$min=date("i");
-$opcionesMinuto= [0,15,30,45];
+$tema="";
+$hora=date("H");
+/*echo $hora;*/
+$minuto=date("i");
+$opcionesMinuto =[0,15,30,45];
 
-$mayores = array_filter($opcionesMinuto, function($m){
-    global $min;
-    return $m > $min;
+$mayores = array_filter($opcionesMinuto,function($m){
+    global $minuto;
+    return $m > $minuto;
 });
 
 if(empty($mayores)){
-    $min = 0;
+    $minuto = 0;
     $hora++;
+    if($hora>23){
+        $hora==00;
+    }
 }else{
-    $min = array_shift($mayores);
+    $minuto= array_shift($mayores);
 }
 
-$errores = [];
+$errores =[];
 
-if(isset($_POST['Enviar'])) {
-    if(!empty($_POST['tema'])) {
+//verificar errores
+if(isset($_POST['Enviar'])){
+    if(!empty($_POST['tema'])){
         $tema = $_POST['tema'];
-    } else {
-        $errores['tema'] = 'No puede estar vacío';
+    }else{
+        $errores['tema'] = 'No puede estar vacio';
     }
 
-    if(!empty($_POST['hora'])) {
+    if(!empty($_POST['hora'])){
         $hora = $_POST['hora'];
-    } else {
-        $errores['hora'] = 'La hora no puede estar vacía';
+    }else{
+        $errores['hora'] = 'No puede estar vacio';
     }
 
-    if(empty($errores)) {
+    if(!empty($_POST['minuto'])){
+        $minuto = $_POST['minuto'];
+    }else{
+        $errores['minuto'] = 'No puede estar vacio';
+    }
 
-        file_put_contents(
-            "./canciones.csv",
-            "$tema;$hora\n",
-            FILE_APPEND
-        );
+    if(count($errores) == 0){
+        //Guardar
+       file_put_contents(
+        "temas.csv",
+        "$tema;$hora;$minuto\n",
+        FILE_APPEND
+       );
 
-        header('Location: listado.php');
+        //Redireccionar
+        header("Location: listado.php");
 
+        //salir
         exit();
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,23 +76,23 @@ if(isset($_POST['Enviar'])) {
             <div class="col-md-6" id="centro">
                 <div class="card">
                     <div class="card-body" id="formulario">
-                        <form action="" type="post">
+                        <form action="" method="post">
                             <h3>Party</h3>
                             <div>
                                 <label>Tema:</label><br>
-                                <input type="text" name="tema" id="tema" placeholder="Introduzca el titulo de la cancion" required><br><br>
+                                <input type="text" name="tema" id="tema" placeholder="Introduzca el titulo de la cancion" value="<?=$tema?>"><br><br>
                                 <?php
-                                    if(isset($errores['temazo'])){
+                                    if(isset($errores['tema'])){
                                         echo "<div class='error'>";
-                                        echo "<p>".$errores['temazo']."</p>";
+                                        echo "<p>".$errores['tema']."</p>";
                                         echo "</div>";
                                     }
                                 ?>
                             </div>
                             <div>
-                                <label>Hora:</label><input type="number" name="hora" id="h" min="0" max="23" size="5"><br><br>
+                                <label>Hora:</label><input type="number" name="hora" id="h" min="0" max="23" size="5" value="<?=$hora?>"><br><br>
                                 <label>Min:</label>
-                                <select>
+                                <select name="minuto" id="minuto" value="<?=$minuto?>"> 
                                 <?php 
                                     array_walk($opcionesMinuto, function($op, $key, $d){
                                         $sel = ($op==$d)?"selected":"";
@@ -90,21 +102,21 @@ if(isset($_POST['Enviar'])) {
                                 </select>
                                 <?php
                                     if(isset($errores['hora'])){
-                                        echo "<div class='error'>";
-                                        echo "<p>".$errores['hora']."</p>";
-                                        echo "</div>";
+                                        echo"<div class='error'>";
+                                        echo"<p>".$errores['hora']."</p>";
+                                        echo"</div>";
                                     }
-
-                                    if(isset($errores['min'])){
-                                        echo "<div class='error'>";
-                                        echo "<p>".$errores['min']."</p>";
-                                        echo "</div>";
+                            
+                                    if(isset($errores['minuto'])){
+                                        echo"<div class='error'>";
+                                        echo"<p>".$errores['minuto']."</p>";
+                                        echo"</div>";
                                     }
                                 ?>
                             </div>
                             <br><br>
                             <div class="d-grid gap-3">
-                                <input type="submit" value="Enviar" class="btn btn-primary btn-block" id="sub">
+                                <input type="submit" value="Enviar" name="Enviar" class="btn btn-primary btn-block" id="sub">
                             </div>
                         </form>
                     </div>
