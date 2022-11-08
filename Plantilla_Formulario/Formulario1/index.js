@@ -26,7 +26,7 @@ form.addEventListener("submit", e=>{
         correcto = true;
     }
     if(edad.value > 150){
-        warning += `El nombre es muy corto<br>`;
+        warning += `Edad incorrecta<br>`;
         correcto = true;
     }
     if(password.value.length < 8){
