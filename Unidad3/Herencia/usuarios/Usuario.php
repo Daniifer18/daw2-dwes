@@ -55,7 +55,12 @@ class Usuario{
         $this->nombre = $nombre;
     }
     
-    public function introducirResultados(Resultado $resultado){
+    public function /* Adding a result to the array of results and then checking if the user has won or
+    lost the match. If the user has won the match, it will check if the user has won
+    6 matches in a row. If so, it will increase the level of the user. If the user
+    has lost the match, it will check if the user has lost 6 matches in a row. If
+    so, it will decrease the level of the user. */
+    introducirResultados(Resultado $resultado){
         
         $this->resultados[] = $resultado;
         
@@ -114,7 +119,7 @@ class Usuario{
     }
 
     public function __toString() : string {
-        return "Nombre: " . $this->getNombre() . ", Apellidos: $this->apellidos, Deporte: $this->deporte, Nivel: $this->nivel".self::mostrarResultados();
+        return "Nombre: " . $this->getNombre() . ", Apellidos: $this->apellido, Deporte: $this->deporte, Nivel: $this->nivel".self::mostrarResultados();
     }
 
 }

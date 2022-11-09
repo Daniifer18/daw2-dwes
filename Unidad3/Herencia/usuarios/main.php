@@ -65,7 +65,7 @@ require('UsuarioPremium.php');
         $pepe->__toString();
 
 
-        $admin = new UsuarioAdmin('Alberto', 'Contreras', 'Baloncesto');
+        $admin = new UsuarioAdmin('Alberto', 'Contreras');
 
         $admin->introducirResultados(Resultado::VICTORIA);
         $admin->introducirResultados(Resultado::VICTORIA);
