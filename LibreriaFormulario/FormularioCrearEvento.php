@@ -5,9 +5,11 @@ use LibreriaFormulario\Campos\CampoEmail;
 use LibreriaFormulario\Campos\CampoFecha;
 use LibreriaFormulario\Campos\CampoNumber;
 use LibreriaFormulario\Campos\CampoRadio;
+use LibreriaFormulario\Campos\CampoSelect;
 use LibreriaFormulario\Campos\CampoTexto;
 use LibreriaFormulario\Utilidad\Evento;
 use LibreriaFormulario\Utilidad\HttpMethod;
+use LibreriaFormulario\Utilidad\Opcion;
 use LibreriaFormulario\Utilidad\OpcionRadio;
 use LibreriaFormulario\Utilidad\TiposInput;
 
@@ -38,6 +40,8 @@ $opciones->addOpcion(new OpcionRadio("Hombre","Hombre","Hombre",Evento::OPCIONES
 $opciones->addOpcion(new OpcionRadio("Mujer","Mujer","Mujer",Evento::OPCIONES));
 $opciones->addOpcion(new OpcionRadio("Otro","Otros","Otro",Evento::OPCIONES));
 
+$select = new CampoSelect("Idiomas","idioma",TiposInput::SELECT,"languages","Error.","Seleccione los idiomas que sepa hablar");
+
 $form->addCampo($nombre);
 $form->addCampo($email);
 $form->addCampo($nombreGrupo);
@@ -45,6 +49,7 @@ $form->addCampo($aforo);
 $form->addCampo($precioEntrada);
 $form->addCampo($fecha);
 $form->addCampo($opciones);
+$form->addCampo($select);
 
 //$validaciones = new Validaciones(HttpMethod::POST);
 //$validaciones->getSingletone($_POST);

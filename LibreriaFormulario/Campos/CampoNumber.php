@@ -8,10 +8,6 @@ use LibreriaFormulario\Utilidad\TiposInput;
 use LibreriaFormulario\Validaciones;
 
 
-
-
-
-
 class CampoNumber extends CampoTexto{
     private int $maximo;
     private int $minimo;
