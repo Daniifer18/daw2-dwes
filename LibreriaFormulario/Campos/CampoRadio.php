@@ -2,11 +2,9 @@
 
 namespace LibreriaFormulario\Campos;
 
-
-use LibreriaFormulario\Utilidad\HttpMethod;
 use LibreriaFormulario\Utilidad\OpcionRadio;
 use LibreriaFormulario\Utilidad\TiposInput;
-use LibreriaFormulario\Validaciones;
+
 
 class CampoRadio extends CampoMultiple{
 
@@ -39,12 +37,22 @@ class CampoRadio extends CampoMultiple{
     }
 
 
-	public function validarCampos(HttpMethod $method): bool {
+	public function validarCampos(array $peticion): bool {
 
-        return Validaciones::getSingletone($method)->validarRadio($this->getName());
+        $valido = false;
 
+        if (isset($peticion[$this->getName()])) {
+            $valores = array_map(function (OpcionRadio $op) : string {
+                return $op->getValue();
+            }, $this->getOpciones());
+            
+            $valido = in_array($peticion[$this->getName()],$valores);
+            
+        }
+        
+        return $valido;
+       
 	}
-
 }
 
 ?>

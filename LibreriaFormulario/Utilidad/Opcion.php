@@ -8,10 +8,13 @@ abstract class Opcion{
 
     private string $label;
 
+    private string $id;
 
-    public function __construct(string $label = "", string $value = "") {
+
+    public function __construct(string $label = "", string $value = "",string $id = "") {
         $this->label = $label;
         $this->value = $value;
+        $this->id = $id;
     }
 
     public function getValue(){
@@ -38,6 +41,18 @@ abstract class Opcion{
     }
 
     abstract function pintarOp() : string;
+
+
+    public function getId(){
+        return $this->id;
+    }
+
+ 
+    public function setId($id){
+        $this->id = $id;
+
+        return $this;
+    }
 }
 
 

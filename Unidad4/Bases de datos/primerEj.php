@@ -8,25 +8,52 @@ try {
     $mbd = new PDO('mysql:host=localhost;dbname=eventos', "dani", "111aaa");
 
     // Utilizar la conexión aquí
-    $resultado = $mbd->prepare('SELECT * FROM Ciclistas');
+    $stmt = $mbd->prepare('SELECT * FROM Ciclistas');
 
-    $consulta = $resultado->execute();
+    $stmt->execute();
 
-    $consulta = $resultado->fetchAll(PDO::FETCH_ASSOC);
+    $consulta = $stmt->fetchAll();
 
-
-        foreach ($consulta as $clave => $valor){
-            echo "<pre>". $clave . "</pre><pre>" . var_dump($valor) . "</pre>";
-        }
+   
     
+    /*
+    $acu = "";
 
+    foreach ($consulta as $fila) {
+        foreach ($fila as $campo) {
+            $acu .= $campo . " ";
+        }
+        $acu .= "<br>";
+    }
+
+    echo $acu;
+    */
     // Ya se ha terminado; se cierra
-    $consulta = null;
+    
     $mbd = null;
 
 } catch (PDOException $e) {
     print "¡Error!: " . $e->getMessage() . "\n";
     die();
+}
+
+function imprimirTabla(array $ciclistas){
+    
+    return "<table>
+    <tr>" .
+        array_reduce($ciclistas[0],function(string $acumulador,array $value,string $key): string {
+
+            return  $acumulador . "<th>" . $key . "<th>" ;
+        },"")
+    ."</tr>".
+        array_reduce($ciclistas,function(string $acumulador,array $ciclista): string {
+            return $acumulador ."<tr>". 
+                array_reduce($ciclista,function(string $acumulador,array $campo) : string{
+                    return $acumulador . "<td> ". $campo ."<td>";
+                },"")
+            ."</tr>";
+        },"")
+    ."</table>";
 }
 
 ?>
@@ -41,9 +68,16 @@ try {
         body{
             background-color: lightblue;
         }
+        table{
+            border-collapse: collapse;
+        }
+        table,tr,td{
+            background-color: white;
+            border: 1px solid black;
+        }
     </style>
 </head>
 <body>
-
+    <?= imprimirTabla($consulta) ?>
 </body>
 </html>

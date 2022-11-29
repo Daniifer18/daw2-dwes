@@ -2,30 +2,17 @@
 
 namespace LibreriaFormulario\Utilidad;
 
+
 use LibreriaFormulario\Utilidad\TiposInput;
 
 class OpcionRadio extends Opcion{
-
-    private string $id;
 
     private string $name;
 
 
     public function __construct(string $label = "", string $value = "",string $id,string $name) {
-        parent::__construct($label,$value);
-        $this->id = $id;
+        parent::__construct($label,$value,$id);
         $this->name = $name;
-    }
-
-    public function getId(){
-        return $this->id;
-    }
-
-
-    public function setId($id){
-        $this->id = $id;
-
-        return $this;
     }
 
  
@@ -40,12 +27,13 @@ class OpcionRadio extends Opcion{
         return $this;
     }
 
+
 	public function pintarOp(): string {
 
         return "
         <div class='form-check'>
-            <input class='form-check-input' type='" . TiposInput::RADIO_BUTTON->value . "' name='" . $this->name . "' id='". $this->id ."' value='" . $this->getValue() . "' required>
-            <label class='form-check-label' for='" . $this->id . "'> " . $this->getLabel() . " </label>
+            <input class='form-check-input' type='" . TiposInput::RADIO_BUTTON->value . "' name='" . $this->name . "' id='". $this->getId() ."' value='" . $this->getValue() ."'required>
+            <label class='form-check-label' for='" . $this->getId() . "'> " . $this->getLabel() . " </label>
         </div>";
 	}
 }

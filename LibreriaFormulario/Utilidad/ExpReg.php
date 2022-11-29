@@ -24,4 +24,8 @@ enum ExpReg : string {
      * 
      */
     case CORREO = '/^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}$/';
+    /**
+     * Fecha formato YYYY-MM-DD
+     */
+    case DATE = '/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/';
 }

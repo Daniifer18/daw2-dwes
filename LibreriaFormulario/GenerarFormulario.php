@@ -2,6 +2,7 @@
 
 namespace LibreriaFormulario;
 
+use Exception;
 use LibreriaFormulario\Campos\Campo;
 use LibreriaFormulario\Utilidad\HttpMethod;
 
@@ -23,8 +24,9 @@ class GenerarFormulario{
 
         for($i = 0;$i < count($this->campos) && $valido;$i++){
             
-            if(!$this->campos[$i]->validarCampos(HttpMethod::POST)){
+            if(!$this->campos[$i]->validarCampos($this->tipoPeticion($this->method))){
                 $valido = false;
+                echo "<h1>" . $this->campos[$i]->getName() . "</h1>";
             }
         }
 
@@ -111,6 +113,24 @@ class GenerarFormulario{
         
         return $this->campos;
  
+    }
+
+    private function tipoPeticion(HttpMethod $metodo){
+
+        $array = [];
+
+        switch($metodo) {
+            case HttpMethod::GET:
+                $array = $_GET;
+            break;
+            case HttpMethod::POST:
+                $array = $_POST;
+            break;
+            default:
+                throw new Exception("Metodo no soportado");
+        }
+
+        return $array;
     }
 }
 

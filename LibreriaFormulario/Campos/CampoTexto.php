@@ -2,7 +2,7 @@
 
 namespace LibreriaFormulario\Campos;
 
-use LibreriaFormulario\Utilidad\HttpMethod;
+use LibreriaFormulario\Utilidad\ExpReg;
 use LibreriaFormulario\Utilidad\Placeholder;
 use LibreriaFormulario\Utilidad\TiposInput;
 use LibreriaFormulario\Validaciones;
@@ -36,13 +36,10 @@ class CampoTexto extends Campo{
         ";
     }
 
-	/**
-	 * @param \LibreriaFormulario\Utilidad\HttpMethod $method
-	 * @return bool
-	 */
-	public function validarCampos(HttpMethod $method): bool {
 
-        return Validaciones::getSingletone($method)->validarNombre($this->getName());
+	public function validarCampos(array $peticion): bool {
+
+        return isset($peticion[$this->getName()]) && (preg_match(ExpReg::NOMBRE->value, $peticion[$this->getName()]));
 
 	}
 

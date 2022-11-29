@@ -3,7 +3,6 @@
 namespace LibreriaFormulario\Campos;
 
 use LibreriaFormulario\Utilidad\TiposInput;
-use LibreriaFormulario\Utilidad\HttpMethod;
 
 
 abstract class Campo{
@@ -79,7 +78,7 @@ abstract class Campo{
 
     public abstract function contenidoCampos() : string;
 
-    public abstract function validarCampos(HttpMethod $method) : bool;
+    public abstract function validarCampos(array $peticion) : bool;
 
 
     protected function mantenerCampo(array $peticion) : string {

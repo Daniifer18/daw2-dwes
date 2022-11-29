@@ -11,7 +11,8 @@ class Evento{
     public const PRECIO_ENTRADA = 'precio';
     public const FECHA = 'fecha';
     public const AFORO = 'aforo';
-    public const OPCIONES = 'name';
+    public const SEXO = 'sexo';
+    public const SELECT = 'languages';
 
     /**
      * Publicas por falta de tiempo, la vida es dura
@@ -24,7 +25,9 @@ class Evento{
     private string $aforo;
     private string $opciones;
 
-    private function __construct(string $nombre,string $email,string $nombreGrupo,string $precioEntrada,string $fecha,string $aforo,string $opciones) {
+    private string $select;
+
+    private function __construct(string $nombre,string $email,string $nombreGrupo,string $precioEntrada,string $fecha,string $aforo,string $opciones,string $select) {
         $this->nombre = $nombre;
         $this->email = $email;
         $this->nombreGrupo = $nombreGrupo;
@@ -32,6 +35,7 @@ class Evento{
         $this->fecha = $fecha;
         $this->aforo = $aforo;
         $this->opciones = $opciones;
+        $this->select = $select;
     }
 
     public static function fromForm(GenerarFormulario $form, array $peticion) : Evento|null {
@@ -45,7 +49,9 @@ class Evento{
                     $peticion[self::PRECIO_ENTRADA],
                     $peticion[self::FECHA],
                     $peticion[self::AFORO],
-                    $peticion[self::OPCIONES]
+                    $peticion[self::SEXO],
+                    $peticion[self::SELECT]
+
                 );
             } catch (\Exception $e) {
                 $evento = null;
@@ -57,14 +63,14 @@ class Evento{
     }
 
     public function toCSV(){
-        return $this->nombre .";" . $this->email . ";"  .  $this->nombreGrupo . ";" . $this->precioEntrada . ";" . $this->fecha . ";" . $this->aforo . ";" . $this->opciones;
+        return $this->nombre .";" . $this->email . ";"  .  $this->nombreGrupo . ";" . $this->precioEntrada . ";" . $this->fecha . ";" . $this->aforo . ";" . $this->opciones . ";" . $this->select;
     }
 
     public static function fromCSV(string $linea) : Evento|null {
         $array = explode(";", $linea);
 
         try {
-            $evento = new Evento ($array[0], $array[1], $array[2], $array[3], $array[4], $array[5], $array[6]);
+            $evento = new Evento ($array[0], $array[1], $array[2], $array[3], $array[4], $array[5], $array[6],$array[7]);
         } catch (\Throwable $th) {
             $evento = null;
         }
@@ -98,6 +104,11 @@ class Evento{
 
     public function getOpciones(){
         return $this->opciones;
+    }
+
+    public function getSelect()
+    {
+        return $this->select;
     }
 }
 

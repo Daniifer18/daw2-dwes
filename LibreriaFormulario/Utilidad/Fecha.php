@@ -37,10 +37,8 @@ class Fecha {
      * @throws Exception En caso de que el valor no sea correcto
      */
     public function setDay(int $day) : void {
-
         if ($day < 0 || $day > cal_days_in_month(CAL_GREGORIAN, $this->month, $this->year)) {
             throw new Exception("El dia debe estar comprendido entre 0 y ". cal_days_in_month(CAL_GREGORIAN, $this->month, $this->year), 1);
-            
         }
 
         $this->day = $day;
@@ -63,7 +61,7 @@ class Fecha {
      * @param int Year. Debe ser mayor que 0
      * @throws Exception En caso de que el valor no sea correcto
      */
-    public function setYear(int $year): void {
+    public function setYear(int $year) : void{
         if ($year < 0) {
             throw new Exception("El año no puede ser negativo.");
         }
@@ -75,7 +73,7 @@ class Fecha {
      * @return bool true si esta fecha es posterior a la actual
      */
     public function despuesDeHoy(): bool {
-        return $this->posteriorA (new Fecha (intval(date("j")), intval(date('m')), intval(date('Y'))));
+        return $this->posteriorA (self::hoy());
     }
 
     /**
@@ -83,7 +81,7 @@ class Fecha {
      * @return bool true si esta fecha es anterior a la actual
      */
     public function antesDeHoy(): bool {
-        return $this->anteriorA(new Fecha (intval(date("j")), intval(date('m')), intval(date('Y'))));
+        return $this->anteriorA(self::hoy());
     }
     
     /**
@@ -91,7 +89,7 @@ class Fecha {
      * @return bool true si esta fecha es igual a la actual
      */
     public function esHoy(): bool {
-        return $this->igualA(new Fecha (intval(date("j")), intval(date('m')), intval(date('Y'))));
+        return $this->igualA(self::hoy());
     }
 
     /**
@@ -126,27 +124,31 @@ class Fecha {
             $this->year == $fecha->year && $this->month == $fecha->month && $this->day < $fecha->day
         ;
     }
-
-    public function __toString() : string {
-        return "$this->day-$this->month-$this->year";
+    
+    public static function hoy() : Fecha{
+        return new Fecha (intval(date("j")), intval(date('m')), intval(date('Y')));
+    }
+    
+    public function toDDMMYYYY() : string {
+        return $this->ponerCeros($this->day) . "-" . $this->ponerCeros($this->month) . "-" . $this->year;
     }
 
-    /**
-     * Parsea una fecha desde un string 
-     * @param string $fecha Linea con un string con fecha formato YYYY-MM-DD
-     */
-    public static function fromYYYYMMDD(string $fecha) : Fecha {
-        $date = explode("-", $fecha);
-        return new Fecha (intval($date[2]), intval($date[1]), intval($date[0]));
+    public function toYYYYMMDD() : string {
+        return $this->year . "-" . $this->ponerCeros($this->month) . "-" . $this->ponerCeros($this->day);
     }
 
-    /**
-     * Parsea una fecha desde un string 
-     * @param string $fecha Linea con un string con fecha formato DD-MM-YYYY
-     */
-    public static function fromDDMMYYYY(string $fecha) : Fecha {
-        $date = explode("-", $fecha);
-        return new Fecha (intval($date[0]), intval($date[1]), intval($date[2]));
+    private function ponerCeros(int $i) : string {
+        return ($i < 10) ? "0".$i : $i;
+    }
+
+    public static function fromDDMMYYYY(string $str, string $separator) {
+        $array = explode($separator, $str);
+        return new Fecha (intval($array[0]), intval($array[1]), intval($array[2]));
+    }
+
+    public static function fromYYYYMMDD(string $str, string $separator) {
+        $array = explode($separator, $str);
+        return new Fecha (intval($array[2]), intval($array[1]), intval($array[0]));
     }
     
 }

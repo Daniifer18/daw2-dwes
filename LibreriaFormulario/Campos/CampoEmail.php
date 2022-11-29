@@ -2,7 +2,7 @@
 
 namespace LibreriaFormulario\Campos;
 
-use LibreriaFormulario\Utilidad\HttpMethod;
+use LibreriaFormulario\Utilidad\ExpReg;
 use LibreriaFormulario\Utilidad\TiposInput;
 use LibreriaFormulario\Validaciones;
 
@@ -25,9 +25,10 @@ class CampoEmail extends CampoTexto{
         ";
     }
 
-	public function validarCampos(HttpMethod $method): bool {
+	public function validarCampos(array $peticion): bool {
 
-       return Validaciones::getSingletone($method)->validarEmail($this->getName());
+       
+        return isset($peticion[$this->getName()]) && (preg_match(ExpReg::CORREO->value, $peticion[$this->getName()]));
     
 	}
 

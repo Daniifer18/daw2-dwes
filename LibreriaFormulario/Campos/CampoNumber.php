@@ -3,6 +3,7 @@
 
 namespace LibreriaFormulario\Campos;
 
+use LibreriaFormulario\Utilidad\ExpReg;
 use LibreriaFormulario\Utilidad\HttpMethod;
 use LibreriaFormulario\Utilidad\TiposInput;
 use LibreriaFormulario\Validaciones;
@@ -29,9 +30,9 @@ class CampoNumber extends CampoTexto{
         ";
     }
 
-    public function validarCampos(HttpMethod $method): bool {
+    public function validarCampos(array $peticion): bool {
 
-        return Validaciones::getSingletone($method)->validarNumero($this->getName());
+        return isset($peticion[$this->getName()]) && (preg_match(ExpReg::NUMERO->value, $peticion[$this->getName()]));
      
     }
 
