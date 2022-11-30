@@ -1,7 +1,7 @@
 <?php
 namespace LibreriaFormulario\Utilidad;
 
-use LibreriaFormulario\GenerarFormulario;
+use LibreriaFormulario\Formulario;
 
 class Evento{
     
@@ -12,7 +12,7 @@ class Evento{
     public const FECHA = 'fecha';
     public const AFORO = 'aforo';
     public const SEXO = 'sexo';
-    public const SELECT = 'languages';
+    public const IDIOMA = 'idioma';
 
     /**
      * Publicas por falta de tiempo, la vida es dura
@@ -24,10 +24,9 @@ class Evento{
     private string $fecha;
     private string $aforo;
     private string $opciones;
+    private string $idioma;
 
-    private string $select;
-
-    private function __construct(string $nombre,string $email,string $nombreGrupo,string $precioEntrada,string $fecha,string $aforo,string $opciones,string $select) {
+    private function __construct(string $nombre,string $email,string $nombreGrupo,string $precioEntrada,string $fecha,string $aforo,string $opciones,string $idioma) {
         $this->nombre = $nombre;
         $this->email = $email;
         $this->nombreGrupo = $nombreGrupo;
@@ -35,10 +34,10 @@ class Evento{
         $this->fecha = $fecha;
         $this->aforo = $aforo;
         $this->opciones = $opciones;
-        $this->select = $select;
+        $this->idioma = $idioma;
     }
 
-    public static function fromForm(GenerarFormulario $form, array $peticion) : Evento|null {
+    public static function fromForm(Formulario $form, array $peticion) : Evento|null {
         $evento = null;
         if ($form->validarForm()) {
             try {
@@ -50,8 +49,7 @@ class Evento{
                     $peticion[self::FECHA],
                     $peticion[self::AFORO],
                     $peticion[self::SEXO],
-                    $peticion[self::SELECT]
-
+                    $peticion[self::IDIOMA]
                 );
             } catch (\Exception $e) {
                 $evento = null;
@@ -63,7 +61,7 @@ class Evento{
     }
 
     public function toCSV(){
-        return $this->nombre .";" . $this->email . ";"  .  $this->nombreGrupo . ";" . $this->precioEntrada . ";" . $this->fecha . ";" . $this->aforo . ";" . $this->opciones . ";" . $this->select;
+        return $this->nombre .";" . $this->email . ";"  .  $this->nombreGrupo . ";" . $this->precioEntrada . ";" . $this->fecha . ";" . $this->aforo . ";" . $this->opciones . ";" . $this->idioma;
     }
 
     public static function fromCSV(string $linea) : Evento|null {
@@ -106,9 +104,9 @@ class Evento{
         return $this->opciones;
     }
 
-    public function getSelect()
+    public function getIdioma()
     {
-        return $this->select;
+        return $this->idioma;
     }
 }
 

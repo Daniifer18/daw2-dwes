@@ -6,7 +6,7 @@ use Exception;
 use LibreriaFormulario\Campos\Campo;
 use LibreriaFormulario\Utilidad\HttpMethod;
 
-class GenerarFormulario{
+class Formulario{
 
     private HttpMethod $method;
     private string $action;
