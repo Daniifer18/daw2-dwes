@@ -115,6 +115,27 @@ class AccesoDatos{
 
         return $exito;
     }
+
+    public function deleteCiclista(int $id){
+
+        $exito = false;
+
+        try {
+        
+            $stmt = $this->conn->prepare('DELETE FROM Ciclistas WHERE id = :id' );
+        
+            $exito = $stmt->execute(
+                array(
+                    ':id' => $id
+                )
+            );
+
+        } catch (\Throwable $th) {
+            //Excapcion al hacer la consulta
+        }
+
+        return $exito;
+    }
 }
 
 
@@ -126,12 +147,16 @@ print_r($a->findAllCiclistas());
 
 echo "</pre>";
 
+echo "<hr>";
+
 echo "<pre>";
 
 print_r($a->findCiclistaById(4));
 
 echo "</pre>";
 
+echo "<hr>";
+/*
 echo "<pre>";
 
 print_r($a->insertCiclista(
@@ -142,10 +167,31 @@ print_r($a->insertCiclista(
 ));
 
 echo "</pre>";
+*/
+echo "<hr>";
 
 echo "<pre>";
 
 print_r($a->findAllCiclistas());
 
 echo "</pre>";
+
+echo "<hr>";
+/*
+echo "<pre>";
+
+print_r($a->deleteCiclista());
+
+echo "</pre>";
+*/
+
+echo "<hr>";
+
+echo "<pre>";
+
+print_r($a->findAllCiclistas());
+
+echo "</pre>";
+
+echo "<hr>";
 ?>
