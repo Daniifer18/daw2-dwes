@@ -49,7 +49,7 @@ function imprimirTabla(array $ciclistas){
         array_reduce($ciclistas,function(string $acumulador,array $ciclista): string {
             return $acumulador ."<tr>". 
                 array_reduce($ciclista,function(string $acumulador,array $campo) : string{
-                    return $acumulador . "<td> ". $campo ."<td>";
+                    return $acumulador . "<td> ". $campo ."</td>";
                 },"")
             ."</tr>";
         },"")
