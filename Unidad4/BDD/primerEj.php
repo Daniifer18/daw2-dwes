@@ -2,13 +2,13 @@
 =========================================
 testConnectionPDO.php-->
 <?php
-
+print_r(PDO::getAvailableDrivers());
 try {
 
-    $mbd = new PDO('mysql:host=localhost;dbname=eventos', "dani", "111aaa");
+    $mbd = new PDO('mysql:host=localhost;dbname=ciclistas', "root", "111aaa");
 
     // Utilizar la conexión aquí
-    $stmt = $mbd->prepare('SELECT * FROM Ciclistas');
+    $stmt = $mbd->prepare('SELECT * FROM ciclistas');
 
     $stmt->execute();
 
@@ -16,7 +16,7 @@ try {
 
    
     
-    /*
+    
     $acu = "";
 
     foreach ($consulta as $fila) {
@@ -27,7 +27,7 @@ try {
     }
 
     echo $acu;
-    */
+    
     // Ya se ha terminado; se cierra
     
     $mbd = null;
@@ -36,7 +36,7 @@ try {
     print "¡Error!: " . $e->getMessage() . "\n";
     die();
 }
-
+/*
 function imprimirTabla(array $ciclistas){
     
     return "<table>
@@ -55,7 +55,7 @@ function imprimirTabla(array $ciclistas){
         },"")
     ."</table>";
 }
-
+*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,6 +78,6 @@ function imprimirTabla(array $ciclistas){
     </style>
 </head>
 <body>
-    <?= imprimirTabla($consulta) ?>
+    
 </body>
 </html>
